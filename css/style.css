@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Tahoma;
+    background-color: white;
+}
+
+.link {
+    overflow: hidden;
+    display: block;
+    margin: 20px auto;
+    width: 160px;
+    height: 40px;
+    border: 2px solid #8bc34a;
+    color: #8bc34a;
+    line-height: 35px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bolder;
+    position: relative;
+    border-radius: 12px;
+}
+
+.link::before {
+    content: attr(data-text);
+    color: #8bc34a;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateX(-100%);
+    transition: .3s linear;
+}
+
+.link span {
+    display: block;
+    transition: .3s linear;
+
+}
+
+.link:hover::before {
+    transform: translateX(0);
+}
+
+.link:hover span {
+    transform: translateX(100%);
+}
+
+.fill {
+    margin: 50px auto;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke: 1px #444;
+    position: relative;
+}
+
+.fill::before {
+    content: attr(data-fill);
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-text-fill-color: #ff5722;
+    transition: .5s;
+    width: 0;
+    overflow: hidden;
+    animation: change 1s infinite linear alternate;
+}
+
+@keyframes change {
+    20%{
+        width: 0;
+    }
+    50%{
+        width: 50%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+
+.product {
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #eee;
+    text-align: center;
+    border: 2px solid #ddd;
+}
+
+.product .title {
+    margin: 20px 0;
+    background-color: #8324f3a1;
+    color: #fff;
+    padding: 5px;
+    width: calc(100% + 74px);
+    position: relative;
+    left: -37px;
+}
+
+.product p {
+    color: #777;
+    line-height: 1.7;
+}
+
+.product .title::before,
+.product .title::after {
+    content: "";
+    position: absolute;
+    bottom: -16px;
+    border-width: 8px;
+    border-style: solid;
+}
+
+.product .title::before {
+    left: 0;
+    border-color: #8840db #8746d3 transparent transparent;
+}
+
+.product .title::after {
+    right: 0;
+    border-color: #8840db  transparent transparent #8746d3;
+}
